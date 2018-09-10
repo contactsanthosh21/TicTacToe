@@ -95,7 +95,7 @@ function load(){
         if (index !== -1) arr.splice(index, 1);
         for(var i=0;i<GRID_LENGTH;i++){
             if(!grid[i].includes(2) && !grid[i].includes(0)){
-                winner("Player Won !!!");
+                winner("You Won !!!");
             }
             else if(!grid[i].includes(1) && !grid[i].includes(0)){
                 winner("Computer Won !!!");
@@ -113,7 +113,7 @@ function load(){
                 }
             }
             if(count == GRID_LENGTH){
-                winner("Player Won !!!");
+                winner("You Won !!!");
             }
             if(count1 == GRID_LENGTH){
                 winner("Computer Won !!!");
@@ -131,7 +131,7 @@ function load(){
             }
         }
         if(count == GRID_LENGTH){
-            winner("Player Won !!!");
+            winner("You Won !!!");
         }
         if(count1 == GRID_LENGTH){
             winner("Computer Won !!!");
