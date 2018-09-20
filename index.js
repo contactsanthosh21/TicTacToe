@@ -76,26 +76,24 @@ function load(){
             addClickHandlers();
             var index = arr.indexOf(item);
             if (index !== -1) arr.splice(index, 1);
-            if(arr.length){
-                checkWinner();
-            }else{
-                winner("Match Drawn");
-            }
+            checkWinner();
         }
     }
     function checkWinner(){
-        let newValue = 2;
-        let pos = arr[Math.floor(Math.random()*arr.length)];
-        rowIdx = pos[0];
-        colIdx = pos[1];
-        grid[colIdx][rowIdx] = newValue;
-        renderMainGrid();
-        addClickHandlers();
-        var index = arr.indexOf(pos);
-        if (index !== -1) arr.splice(index, 1);
+        if(arr.length){
+            let newValue = 2;
+            let pos = arr[Math.floor(Math.random()*arr.length)];
+            rowIdx = pos[0];
+            colIdx = pos[1];
+            grid[colIdx][rowIdx] = newValue;
+            renderMainGrid();
+            addClickHandlers();
+            var index = arr.indexOf(pos);
+            if (index !== -1) arr.splice(index, 1);
+        }
         for(var i=0;i<GRID_LENGTH;i++){
             if(!grid[i].includes(2) && !grid[i].includes(0)){
-                winner("You Won !!!");
+                winner("Player Won !!!");
             }
             else if(!grid[i].includes(1) && !grid[i].includes(0)){
                 winner("Computer Won !!!");
@@ -113,7 +111,7 @@ function load(){
                 }
             }
             if(count == GRID_LENGTH){
-                winner("You Won !!!");
+                winner("Player Won !!!");
             }
             if(count1 == GRID_LENGTH){
                 winner("Computer Won !!!");
@@ -131,7 +129,7 @@ function load(){
             }
         }
         if(count == GRID_LENGTH){
-            winner("You Won !!!");
+            winner("Player Won !!!");
         }
         if(count1 == GRID_LENGTH){
             winner("Computer Won !!!");
@@ -152,8 +150,8 @@ function load(){
                 winner("Computer Won !!!");
             }
         }
-        if(!arr.length){
-            winner("Match Drawn");
+        if(!arr.length && !check){
+            checkDraw();
         }
     }
     function addClickHandlers() {
@@ -162,9 +160,14 @@ function load(){
             boxes[idx].addEventListener('click', onBoxClick, false);
         }
     }
-
+    let check=0;
     function winner(result){
+        check=1;
         document.getElementById('popUpContent').innerHTML='<p><span>'+result+'</span></p><button onclick="location.reload();">Play Again!!!</button>';
+        document.getElementById('popUp').style.display="block";
+    }
+    function checkDraw(){
+        document.getElementById('popUpContent').innerHTML='<p><span>Match Drawn</span></p><button onclick="location.reload();">Play Again!!!</button>';
         document.getElementById('popUp').style.display="block";
     }
 
