@@ -1,11 +1,9 @@
+$('#inputModal').modal('show');
 function load(){
-    document.getElementById('popUpInput').style.display="none";
+    $('#inputModal').modal('hide');
     var size;
-    if(document.getElementById("size").value>2){
-        size=document.getElementById("size").value;
-    }else{
-        size=3;
-    }
+    var e = document.getElementById("gridSize");
+    size = e.options[e.selectedIndex].value;
     const grid = [];
     const GRID_LENGTH = size;
     let turn = 'X';
@@ -22,7 +20,6 @@ function load(){
 
     function getRowBoxes(colIdx) {
         let rowDivs = '';
-        
         for(let rowIdx=0; rowIdx < GRID_LENGTH ; rowIdx++ ) {
             let additionalClass = 'darkBackground';
             let content = '';
@@ -93,7 +90,7 @@ function load(){
         }
         for(var i=0;i<GRID_LENGTH;i++){
             if(!grid[i].includes(2) && !grid[i].includes(0)){
-                winner("Player Won !!!");
+                winner("You Won !!!");
             }
             else if(!grid[i].includes(1) && !grid[i].includes(0)){
                 winner("Computer Won !!!");
@@ -111,7 +108,7 @@ function load(){
                 }
             }
             if(count == GRID_LENGTH){
-                winner("Player Won !!!");
+                winner("You Won !!!");
             }
             if(count1 == GRID_LENGTH){
                 winner("Computer Won !!!");
@@ -129,7 +126,7 @@ function load(){
             }
         }
         if(count == GRID_LENGTH){
-            winner("Player Won !!!");
+            winner("You Won !!!");
         }
         if(count1 == GRID_LENGTH){
             winner("Computer Won !!!");
@@ -144,7 +141,7 @@ function load(){
                     count3++;
                 }
             if(count2 == GRID_LENGTH){
-                winner("Player Won !!!");
+                winner("You Won !!!");
             }
             if(count3 == GRID_LENGTH){
                 winner("Computer Won !!!");
@@ -163,12 +160,12 @@ function load(){
     let check=0;
     function winner(result){
         check=1;
-        document.getElementById('popUpContent').innerHTML='<p><span>'+result+'</span></p><button onclick="location.reload();">Play Again!!!</button>';
-        document.getElementById('popUp').style.display="block";
+        $('.modal-title').html('<p><span>'+result+'</span></p>');
+        $('#myModal').modal('show');
     }
     function checkDraw(){
-        document.getElementById('popUpContent').innerHTML='<p><span>Match Drawn</span></p><button onclick="location.reload();">Play Again!!!</button>';
-        document.getElementById('popUp').style.display="block";
+        $('.modal-title').html('<p><span>Match Drawn</span></p>');
+        $('#myModal').modal('show');
     }
 
     initializeGrid();

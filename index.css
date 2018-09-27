@@ -2,6 +2,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
 }
 
 .gridTop{
@@ -29,8 +35,8 @@
 }
 
 .box {
-    width: 100;
-    height: 100;
+    width: 9vw;
+    height: 17vh;
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -44,10 +50,11 @@
 
 .cross{
     color: #59cc4c;
-    font-size: 2.5em;
+    font-size: 4vw;
     border-radius: 5px;
     line-height: 100px;
 }
+
 #popUp,#popUpInput{
     position: fixed; 
     display: none; 
@@ -60,14 +67,13 @@
     background-color: rgba(0,0,0,0.5); 
     z-index: 2;  
 }
-input{
+select{
     display: block;
     margin: auto;
     padding: 8px 0;
     font-size: 20px;
     width: 28%;
-    text-align: center;
-
+    text-align-last: center;
 }
 #popUpInput{
     display:block;
@@ -105,21 +111,57 @@ input{
     font-size:22px;
     font-weight: bold;
 }
-button{
-    background-color: #4CAF50; 
+/* New css */
+  #modal-dialog {
+    background-color: #fefefe;
+    border: 1px solid #888;
+   }
+  
+   .modal-title p {
+    font-weight: bold;
+    font-family: sans-serif;
+    color: grey; 
+  }
+  
+  .modal-title  span {
+    font-size: 2vw;
+    color: #009688;
+  }
+  
+  .modal-footer button,#popUpContentInput button {
+    background-color: #4CAF50;
     border: none;
     color: white;
-    padding: 16px 32px;
     text-align: center;
-    text-decoration: none;
     display: inline-block;
-    font-size: 16px;
     cursor: pointer;
-    border-radius: 12px;
-    margin-top: 2%;
-}
-button:hover {
+    border-radius: 12px; }
+  
+  .modal-footer button:hover ,#popUpContentInput button:hover{
     border: 2px solid #4CAF50;
-    background-color:white;
-    color: #4CAF50;
-}
+    background-color: white;
+    color: #4CAF50!important; 
+  }
+  
+    .modal-footer,.modal-header {
+      text-align:center!important;
+    }
+  
+    .modal {
+      text-align: center;
+      padding: 0!important;
+    }
+    
+    .modal:before {
+      content: '';
+      display: inline-block;
+      height: 100%;
+      vertical-align: middle;
+      margin-right: -4px;
+    }
+    
+    .modal-dialog {
+      display: inline-block;
+      text-align: left;
+      vertical-align: middle;
+    }
